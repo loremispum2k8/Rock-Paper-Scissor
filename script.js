@@ -46,10 +46,12 @@
 //  > IF computerMove - SCISSOR and humanMove ---- ROCK - win + 1 to the human / PAPER - lose + 1 to the computer / SCISSOR - draw
 
 
+let humanScore = 0;
+let computerScore = 0;
 
-
-let actualHumanChoice;
-let actualComputerChoice;
+function playGame(){
+    let actualHumanChoice;
+    let actualComputerChoice;
 
 function getcomputerchoice(){
     choiceValue = Math.floor(Math.random()*3);
@@ -71,16 +73,13 @@ function gethumanchoice(){
     actualHumanChoice = (prompt('Enter your choice (singural noun)')).toUpperCase();
     
     if (actualHumanChoice !== 'ROCK' && actualHumanChoice !== 'PAPER' && actualHumanChoice !== 'SCISSOR'){
-        actualhumanchoice = 'Error';
-        alert('Invalid choice')
+        alert('Invalid choice');
+        actualHumanChoice = (prompt('Enter your choice (singural noun)')).toUpperCase();
     }
 
     return actualHumanChoice;
 }
 
-
-let humanScore = 0;
-let computerScore = 0;
 
 function playRound(x, y) {
     if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'ROCK'){
@@ -111,10 +110,20 @@ function playRound(x, y) {
     } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'SCISSOR'){
         console.log('Draw');
     }
-
-
-    console.log(humanScore);
-    console.log(computerScore);
 }
 
 playRound(gethumanchoice(), getcomputerchoice());
+console.log('YOU - '+actualHumanChoice+' / Computer - '+actualComputerChoice);
+console.log('');
+
+}
+
+function finalFullGame () {
+    for (let i=0; i<5; i++){
+    playGame();
+    }
+
+    console.log("Your score - " + humanScore);
+    console.log("Computer score - " + computerScore);
+}
+finalFullGame();
