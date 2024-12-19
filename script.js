@@ -106,7 +106,8 @@ function playRound(x, y) {
         console.log('You win');
         humanScore++;
     } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'PAPER'){
-        console.log('Draw');
+        console.log('You lose');
+        computerScore++;
     } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'SCISSOR'){
         console.log('Draw');
     }
