@@ -40,9 +40,15 @@
 
 
 
+// Create 3 IF structures to compare the computer moves with the human moves
+//  > IF computerMove - ROCK and humanMove ---- ROCK - draw / PAPER - win + 1 to the human / SCISSOR - lose + 1 to the computer
+//  > IF computerMove - PAPER and humanMove ---- ROCK - lose + 1 to the computer  / PAPER - draw / SCISSOR - win + 1 to the human
+//  > IF computerMove - SCISSOR and humanMove ---- ROCK - win + 1 to the human / PAPER - lose + 1 to the computer / SCISSOR - draw
 
 
-let actualhumanchoice;
+
+
+let actualHumanChoice;
 let actualComputerChoice;
 
 function getcomputerchoice(){
@@ -72,12 +78,43 @@ function gethumanchoice(){
     return actualHumanChoice;
 }
 
+
 let humanScore = 0;
 let computerScore = 0;
 
+function playRound(x, y) {
+    if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'ROCK'){
+        console.log('Draw');
+    } else if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'PAPER'){
+        console.log('You win');
+        humanScore++;
+    } else if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'SCISSOR'){
+        console.log('You lose');
+        computerScore++;
+    }
 
-function playRound(humanChoice, computerChoice) {
-    // your code here!
+    if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'ROCK'){
+        console.log('You lose');
+        computerScore++;
+    } else if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'PAPER'){
+        console.log('Draw');
+    } else if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'SCISSOR'){
+        console.log('You win');
+        humanScore++;
+    }
+
+    if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'ROCK'){
+        console.log('You win');
+        humanScore++;
+    } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'PAPER'){
+        console.log('Draw');
+    } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'SCISSOR'){
+        console.log('Draw');
+    }
+
+
+    console.log(humanScore);
+    console.log(computerScore);
 }
 
 playRound(gethumanchoice(), getcomputerchoice());
