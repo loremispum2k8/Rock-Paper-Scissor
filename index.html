@@ -4,40 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="111-1114370_rock-paper-scissors-rock-paper-scissors-clipart.png">
 </head>
 <body>
+    <div id="annouce-winner" class="hide"></div>
     <div class="container">
         <div class="upper-container">
             <div class="each-choice">
                 <h3 class="player">You</h3>
-                <h1 id="you-choice" class="choice">R0KK</h1>
+                <div id="you-choice" class="choice">-</div>
             </div>
-            <div class="conclusion">W||N</div>
+            <div id="final" class="conclusion">-</div>
             <div class="each-choice">
                 <h3 class="player">Computer</h3>
-                <h1 id="computer-choice" class="choice">R0KK</h1>
+                <div id="computer-choice" class="choice">-</div>
             </div>
         </div>
+        
+        
+        
         <div class="bottom-container">
             <div class="score-container">
                 <p>Score</p>
-                <div id="you-score" class="score"></div>
+                <div style="cursor: pointer;" id="you-score" class="score">0</div>
             </div>
             <div class="choice-btns-container">
                 <h2>Choose</h2>
-                <button id="rock">Rock</button>
-                <button id="paper">Paper</button>
-                <button id="scissor">Scissors</button>
+                <button id="button">Rock</button>
+                <button id="button">Paper</button>
+                <button id="button">Scissor</button>
             </div>
             <div class="score-container">
                 <p>Score</p>
-                <div id="you-score" class="score"></div>
+                <div style="cursor: pointer;" id="computer-score" class="score">0</div>
             </div>
         </div>
     </div>
 
 
     
-   <!--<script src="script.js"></script>-->
+   <script src="script.js"></script>
 </body>
 </html>

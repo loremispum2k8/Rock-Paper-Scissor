@@ -1,130 +1,84 @@
-// Add the function getcomputerchoice()
-//  > Return randomly ROCK / PAPER / SCISSOR
-//      > Use math.random to get a number between 0-1 and store it into a variable - choiceValue;
-//      > Multiply math.random to 3 to get a number between 0-3;
-//      > Use math.floor() to get a number between 0-2;
-//    
-//      > Make a variable actualComputerChoice
-//      > Make a SWITCH statement construction
-//          > If choiceValue === 0, actualComputerChoice = ROCK;
-//          > Else if choiceValue === 1, actualComputerChoice = PAPER;
-//          > Else if choiceValue === 2, actualComputerChoice = SCISSOR;
-//  
-//      return actulComputerChoice
-//  
-//  > Console.log the function with the computerChoice returned;
-
-
-
-
-// Add the function gethumanchoice()
-//  > Return the human choice ROCK / PAPER / SCISSOR  
-//      > Use a prompts "Enter your choice (singural noun)" and store in into a variable - actualhumanchoice + toUpperCase
-//      > Make an IF statement construction to check for the correct choices
-//          > If actualhumanchoice === 'ROCK', actualhumanchoice = 'ROCK';
-//          > If actualhumanchoice === 'PAPER', actualhumanchoice = 'PAPER';
-//          > If actualhumanchoice === 'SCISSOR', actualhumanchoice = 'SCISSOR';
-//
-//          > If actualhumanchoice != 'ROCK' && actualhumanchoice != "PAPER" && actualhumanchoice != "SCISSOR", actualhumanchoice = 'ERROR', alert('invalid choice');
-// 
-//       > Return actulComputerChoice
-//  
-//  > Console.log the function with the human choice returned
-//
-
-
-
-
-// Create the score for the human and computer using variables set to 0
-
-
-
-
-// Create 3 IF structures to compare the computer moves with the human moves
-//  > IF computerMove - ROCK and humanMove ---- ROCK - draw / PAPER - win + 1 to the human / SCISSOR - lose + 1 to the computer
-//  > IF computerMove - PAPER and humanMove ---- ROCK - lose + 1 to the computer  / PAPER - draw / SCISSOR - win + 1 to the human
-//  > IF computerMove - SCISSOR and humanMove ---- ROCK - win + 1 to the human / PAPER - lose + 1 to the computer / SCISSOR - draw
-
-
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame(){
-    let actualHumanChoice;
-    let actualComputerChoice;
+let youChoice = document.getElementById('you-choice');
+let computerChoice = document.getElementById('computer-choice');
+let conclusion = document.getElementById('final');
+let youScore = document.getElementById('you-score');
+let AIScore = document.getElementById('computer-score');
 
-function getcomputerchoice(){
-    choiceValue = Math.floor(Math.random()*3);
-    switch(choiceValue){
-        case 0:
-            actualComputerChoice = 'ROCK'
-        break;
-        case 1:
-            actualComputerChoice = 'PAPER'
-        break;
-        case 2:
-            actualComputerChoice = 'SCISSOR'
-        break;
-    }
-    return actualComputerChoice
-}
+let hideOrShow = document.getElementById('annouce-winner');
 
-function gethumanchoice(){
-    actualHumanChoice = (prompt('Enter your choice (singural noun)')).toUpperCase();
+let buttons = document.querySelectorAll('#button');
+
+buttons.forEach((button) => button.addEventListener('click', (e)=>{
+
+        let actualHumanChoice;
+        let actualComputerChoice;
+
+        actualHumanChoice = e.target.textContent.toUpperCase();
     
-    if (actualHumanChoice !== 'ROCK' && actualHumanChoice !== 'PAPER' && actualHumanChoice !== 'SCISSOR'){
-        alert('Invalid choice');
-        actualHumanChoice = (prompt('Enter your choice (singural noun)')).toUpperCase();
-    }
+        choiceValue = Math.floor(Math.random()*3);
+        switch(choiceValue){
+            case 0:
+                actualComputerChoice = 'ROCK'
+            break;
+            case 1:
+                actualComputerChoice = 'PAPER'
+            break;
+            case 2:
+                actualComputerChoice = 'SCISSOR'
+            break;
+        }
 
-    return actualHumanChoice;
+        computerChoice.textContent = actualComputerChoice;
+        youChoice.textContent = actualHumanChoice
+    
+    
+        if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'ROCK'){
+            conclusion.textContent = 'DRAW';
+        } else if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'PAPER'){
+            conclusion.textContent = 'WIN';
+            humanScore++;
+        } else if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'SCISSOR'){
+            conclusion.textContent = 'LOSE';
+            computerScore++;
+        }
+    
+        if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'ROCK'){
+            conclusion.textContent = 'LOSE';
+            computerScore++;
+        } else if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'PAPER'){
+            conclusion.textContent = 'DRAW';
+        } else if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'SCISSOR'){
+            conclusion.textContent = 'WIN';
+            humanScore++;
+        }
+    
+        if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'ROCK'){
+            conclusion.textContent = 'WIN';
+            humanScore++;
+        } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'PAPER'){
+            conclusion.textContent = 'LOSE';
+            computerScore++;
+        } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'SCISSOR'){
+            conclusion.textContent = 'DRAW';
+        }
+
+        youScore.textContent = humanScore;
+        AIScore.textContent = computerScore;
+
+        console.log('Human score: ' + humanScore);
+        console.log('Computer score: ' + computerScore)
+
+        if(humanScore === 5 || computerScore === 5){
+            hideOrShow.classList.add('show')
+            hideOrShow.classList.remove('hide')
+            if(humanScore > computerScore){
+                hideOrShow.textContent = 'You WON'
+            } else {
+                hideOrShow.textContent = 'Computer WON'
+            }
+        }
 }
-
-
-function playRound(x, y) {
-    if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'ROCK'){
-        console.log('Draw');
-    } else if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'PAPER'){
-        console.log('You win');
-        humanScore++;
-    } else if(actualComputerChoice === 'ROCK' && actualHumanChoice === 'SCISSOR'){
-        console.log('You lose');
-        computerScore++;
-    }
-
-    if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'ROCK'){
-        console.log('You lose');
-        computerScore++;
-    } else if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'PAPER'){
-        console.log('Draw');
-    } else if(actualComputerChoice === 'PAPER' && actualHumanChoice === 'SCISSOR'){
-        console.log('You win');
-        humanScore++;
-    }
-
-    if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'ROCK'){
-        console.log('You win');
-        humanScore++;
-    } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'PAPER'){
-        console.log('You lose');
-        computerScore++;
-    } else if(actualComputerChoice === 'SCISSOR' && actualHumanChoice === 'SCISSOR'){
-        console.log('Draw');
-    }
-}
-
-playRound(gethumanchoice(), getcomputerchoice());
-console.log('YOU - '+actualHumanChoice+' / Computer - '+actualComputerChoice);
-console.log('');
-
-}
-
-function finalFullGame () {
-    for (let i=0; i<5; i++){
-    playGame();
-    }
-
-    console.log("Your score - " + humanScore);
-    console.log("Computer score - " + computerScore);
-}
-finalFullGame();
+))

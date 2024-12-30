@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+.upper-container, .bottom-container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 180px;
+}
+.upper-container{
+    gap: 60px;
+}
+.bottom-container{
+    background-color: #111111;
+    color: white;
+}
+.each-choice{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 0px 40px;
+    box-shadow: 0px 5px 5px 5px rgb(240, 240, 240);
+    background-color: rgb(247, 247, 247);
+    border-radius: 10px;
+    height: 240px;
+    justify-content: center;
+    gap: 20px;
+}
+.choice{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    font-size: 56px;
+    font-weight: bold;
+}
+.conclusion{
+    font-size: 34px;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 10px 0px;
+    box-shadow: 0px 5px 5px 5px rgb(240, 240, 240);
+    background-color: rgb(247, 247, 247);
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 70px;
+}
+.score-container:first-child{
+    font-size: 18px;
+}
+.score{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    border: 2px solid rgb(83, 83, 83);
+    border-radius: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}
+.choice-btns-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.choice-btns-container h2{
+    font-size: 34px;
+    font-weight: normal;
+}
+.choice-btns-container button{
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+    border-radius: 4px;
+    height: 30px;
+    font-weight: bold;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+.choice-btns-container button:hover{
+
+    transform: scale(1.05);
+}
+.choice-btns-container button:active{
+    background-color: rgb(209, 209, 209);
+}
+.show{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(51, 51, 51, 0.753);
+    font-weight: bold;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    backdrop-filter: blur(3px);
+}
+.hide{
+    display: none;
+}
